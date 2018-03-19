@@ -108,68 +108,7 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 //		super.doPost(request, response);
-			System.out.println("post===============================拦截！");
-			response.setContentType("text/html;charset=utf-8");
-			response.setCharacterEncoding("utf-8");
-			PrintWriter out = response.getWriter();
-			Map<String, Object> result = new HashMap<String, Object>();
-			String _id = request.getParameter("id");
-			String msg = "修改" ;
-			if (_id == null || "".equals(_id)) { 
-				msg = "新增";
-			}
-			try {
-				Connection connection = StudentsSearch.getConnection();// 链接数据库
-				Statement state= (Statement) connection.createStatement();   //容器
-				 String _userName = request.getParameter("userName");
-				 String _password = request.getParameter("password");
-				 int _age = Integer.parseInt(request.getParameter("age"));
-				 String _rowId = request.getParameter("rowId");
-				 
-				 if(_id != "" ){				 
-					 //执行修改
-					 String sql="UPDATE guoguoblog SET name='"+_userName+"',age="+ _age +",password='"+_password+"',rowId='"+_rowId+"' WHERE id='"+_id+"'";	 
-					 state.executeUpdate(sql); 
-				     connection.close();			     
-					 result.put("success",true);
-					 result.put("msg",msg+ "成功");
-					 JSONObject jsonObj = JSONObject.fromObject(result);
-					 out.println(jsonObj);
-				 }else {
-					 //执行新增
-//					 String sql1 = "SELECT * FROM `guoguoblog` WHERE name LIKE ? AND password LIKE ? order by age asc";
-//                     List<Students> student = new StudentsSearch().finStudents(sql1,"", "");
-//                     String _newId = String.valueOf(student.size() + 1);
-					 String sql = "insert into guoguoblog(name,password,age,rowId,id) values(?,?,?,?,?)"; 
-					 PreparedStatement ptmt = (PreparedStatement) connection.prepareStatement(sql); 
-					 ptmt.setString(1, _userName); 
-					 ptmt.setString(2, _password); 
-					 ptmt.setInt(3, _age); 
-					 ptmt.setString(4, _rowId); 
-					 ptmt.setString(5, getUUID()); 	
-					 ptmt.execute();				     
-					 result.put("success",true);
-					 result.put("msg",msg+"成功");
-					 JSONObject jsonObj = JSONObject.fromObject(result);
-					 out.println(jsonObj);
-				 }
-				
-			} catch (Exception e) {
-				// TODO: handle exception
-				  System.out.println("=============异常捕获");
-				 result.put("success",false);
-				 result.put("msg",msg+ "失败");
-				 result.put("data",null);
-				 JSONObject jsonObj = JSONObject.fromObject(result);
-				out.println(jsonObj);
-				
-			}
-			out.flush();
-			out.close();
 		
-	};
-	public static String getUUID() {
-		return UUID.randomUUID().toString().replace("-", "").toUpperCase();
 	};
 
 }
