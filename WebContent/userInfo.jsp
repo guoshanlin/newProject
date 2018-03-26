@@ -2,12 +2,16 @@
 <%
 	String base = request.getContextPath();
 	request.setAttribute("base", base);
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+base+"/";
+	request.setAttribute("basePath", basePath);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>设置用户信息</title>
+<script type="text/javascript" src="${basePath}/src/js/jquery.min.js"></script>
+<script type="text/javascript" src="${basePath}/src/js/jquery-ui-1.9.2.custom.js"></script>
 </head>
 <body>
 <h4>修改用户信息</h4>
@@ -20,16 +24,30 @@
     </form>
      <p><input type="submit" value="Submit" onclick="Submit()"/></p> 
 </body>
+<script type="text/javascript" src="${basePath}/src/js/utils.js"></script>
+
+<script type="text/javascript" src="${basePath}/src/js/utilsNew.js"></script>
+
 <script type="text/javascript">
         function Submit(){
-           ajax();
+        console.log($.ui.tabs);
+        //$.UtilsNew.textFunction();
+       //    ajax();
            return false;
         }
         
         function ajax() {
-
+               var _userName = document.getElementById("userName").value;
+               var _password = document.getElementById("password").value;
+               var _age = document.getElementById("age").value;
+               var _rowId = document.getElementById("rowId").value;
+               var _url = "UserInfo?userName="+_userName+"&password="+_password+"&age="+_age+ "&rowId="+_rowId;
+               var _type ="post";
+               Utils.requireAjax(_url,_type,function(data){
+                  console.log(data);
+               });
           //先声明一个异步请求对象
-          var xmlHttpReg = null;
+    /*       var xmlHttpReg = null;
           if (window.ActiveXObject) {//如果是IE
               xmlHttpReg = new ActiveXObject("Microsoft.XMLHTTP");
           } else if (window.XMLHttpRequest) {
@@ -38,11 +56,6 @@
 
           //如果实例化成功,就调用open()方法,就开始准备向服务器发送请求
           if (xmlHttpReg != null) {
-               var _userName = document.getElementById("userName").value;
-               var _password = document.getElementById("password").value;
-               var _age = document.getElementById("age").value;
-               var _rowId = document.getElementById("rowId").value;
-               var _url = "UserInfo?userName="+_userName+"&password="+_password+"&age="+_age+ "&rowId="+_rowId;
                xmlHttpReg.open("post", _url, true);
                xmlHttpReg.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); 
                // xmlHttpReg.send({userName:_userName,password:_password});
@@ -70,7 +83,7 @@
                   }
               }
 
-          }
+          }*/
         
 
       }
