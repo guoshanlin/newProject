@@ -10,8 +10,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>设置用户信息</title>
-<script type="text/javascript" src="${basePath}/src/js/jquery.min.js"></script>
-<script type="text/javascript" src="${basePath}/src/js/jquery-ui-1.9.2.custom.js"></script>
+<%-- <script type="text/javascript" src="${basePath}/src/js/jquery.min.js"></script>
+<script type="text/javascript" src="${basePath}/src/js/jquery-ui-1.9.2.custom.js"></script> --%>
 </head>
 <body>
 <h4>修改用户信息</h4>
@@ -25,14 +25,14 @@
      <p><input type="submit" value="Submit" onclick="Submit()"/></p> 
 </body>
 <script type="text/javascript" src="${basePath}/src/js/utils.js"></script>
-
-<script type="text/javascript" src="${basePath}/src/js/utilsNew.js"></script>
+<%-- 
+<script type="text/javascript" src="${basePath}/src/js/utilsNew.js"></script> --%>
 
 <script type="text/javascript">
         function Submit(){
         console.log($.ui.tabs);
         //$.UtilsNew.textFunction();
-       //    ajax();
+           ajax();
            return false;
         }
         
