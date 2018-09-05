@@ -114,7 +114,7 @@ public class UserInfo extends HttpServlet {
 			 if(_id != "" ){				 
 				 //执行修改
 				 System.out.println("执行修改=================================");
-				 String sql="UPDATE guoguoblog SET name='"+_userName+"',age="+ _age +",password='"+_password+"',rowId='"+_rowId+"' WHERE id='"+_id+"'";	 
+				 String sql="UPDATE guoguoblog SET name='"+_userName+"',age="+ _age +",password='"+_password+"',row_id='"+_rowId+"' WHERE id='"+_id+"'";	 
 				 state.executeUpdate(sql); 
 			     connection.close();			     
 				 result.put("success",true);
@@ -127,7 +127,7 @@ public class UserInfo extends HttpServlet {
 //                 List<Students> student = new StudentsSearch().finStudents(sql1,"", "");
 //                 String _newId = String.valueOf(student.size() + 1);
 				 System.out.println("执行新增=================================");
-				 String sql = "insert into guoguoblog(name,password,age,rowId,id) values(?,?,?,?,?)"; 
+				 String sql = "insert into guoguoblog(name,password,age,row_id,id) values(?,?,?,?,?)"; 
 				 PreparedStatement ptmt = (PreparedStatement) connection.prepareStatement(sql); 
 				 ptmt.setString(1, _userName); 
 				 ptmt.setString(2, _password); 

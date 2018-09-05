@@ -7,16 +7,16 @@
 		<servlet-name>UserServlet</servlet-name>
 		<servlet-class>com.net.login.UserServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>UserInfo</servlet-name>
-		<url-pattern>/UserInfo</url-pattern>
-	</servlet-mapping>
-		<servlet>
+	<servlet>
 		<description></description>
 		<display-name>UserInfo</display-name>
 		<servlet-name>UserInfo</servlet-name>
 		<servlet-class>com.net.login.UserInfo</servlet-class>
 	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserInfo</servlet-name>
+		<url-pattern>/UserInfo</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>UserServlet</servlet-name>
 		<url-pattern>/UserServlet</url-pattern>

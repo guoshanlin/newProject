@@ -65,7 +65,7 @@ public class StudentsSearch {
 			statement.setObject(2, "%" + keyWorld + "%");
 			ResultSet rs = statement.executeQuery(); // 查询结果转义
 			while (rs.next()) {
-				Students stu = new Students(rs.getString("name"),rs.getInt("age"),rs.getString("id"),rs.getString("rowId"),rs.getString("password"));
+				Students stu = new Students(rs.getString("name"),rs.getInt("age"),rs.getString("id"),rs.getString("row_id"),rs.getString("password"));
 				student.add(stu);
 			}
 		} catch (SQLException e) {
